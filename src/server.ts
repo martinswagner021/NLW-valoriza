@@ -1,3 +1,4 @@
+require('dotenv').config()
 import "reflect-metadata";
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
@@ -5,6 +6,8 @@ import "express-async-errors";
 import {router} from "./routes"
 
 import "./database"
+
+const port = process.env.PORT || 3000
 
 const app = express();
 
@@ -23,4 +26,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 })
 
-app.listen(3000, () => console.log("Server running in port 3000"));
+app.listen(port, () => console.log(`Server is running on ${port}...`));
